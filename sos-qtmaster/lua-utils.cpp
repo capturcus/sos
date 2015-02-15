@@ -1,6 +1,6 @@
 #include "lua-utils.h"
 
-#pragma comment(lib, "lua.lib");
+#pragma comment(lib, "lua.lib")
 
 void printLuaValue(lua_State* L, int i){
 	int t = lua_type(L, i);

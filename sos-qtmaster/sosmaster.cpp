@@ -50,21 +50,27 @@ SOSMaster::~SOSMaster()
 
 void SOSMaster::returnPressed() {
 	QString text = ui.lineEdit->text();
+
+	if (text == "exit")
+		qApp->exit();
+
 	ui.lineEdit->clear();
+
 	int res = luaL_dostring(L, text.toStdString().c_str());
 	ui.luaOutput->setText(ui.luaOutput->text() + ">" + text + "\n");
+
 	char buffer[1024] = { 0 };
 	
-	printf("");
+	printf("#");
 
 	ReadFile(readPipe, buffer, 128, 0, 0);
 	//ReadFileEx(readPipe, buffer, 128, 0, 0);
 
-	ui.luaOutput->setText(ui.luaOutput->text() + buffer);
+	ui.luaOutput->setText(ui.luaOutput->text() + buffer + "\n");
 
 	if (res != 0){
 		const char* err = lua_tostring(L, -1);
-		ui.luaOutput->setText(ui.luaOutput->text() + err);
+		ui.luaOutput->setText(ui.luaOutput->text() + "ERROR: " + err + "\n");
 		lua_pop(L, 1);
 	}
 }

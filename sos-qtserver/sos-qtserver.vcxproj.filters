@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h</Extensions>
     </Filter>
-    <Filter Include="Form Files">
-      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
-      <Extensions>ui</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
       <Extensions>qrc;*</Extensions>
@@ -24,12 +20,12 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{dd414676-ece4-462e-b358-b36bb68f65ee}</UniqueIdentifier>
+      <UniqueIdentifier>{40f25b13-4c69-41f1-ba8e-43139c1f12ec}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{e3464ef9-ebd1-4c82-84d7-47f0278131cc}</UniqueIdentifier>
+      <UniqueIdentifier>{d80fb518-a2a9-4bc1-bfd3-6f585b997c28}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -38,43 +34,42 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sosmaster.cpp">
+    <ClCompile Include="sosserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_sosmaster.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_sosserver.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_sosmaster.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_sosserver.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_sosmaster.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lua-utils.cpp">
+    <ClCompile Include="networkthread.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_networkthread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_networkthread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="uithread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_uithread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_uithread.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="sosmaster.h">
+    <CustomBuild Include="sosserver.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="sosmaster.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="sosmaster.qrc">
-      <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\ui_sosmaster.h">
-      <Filter>Generated Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="lua.hpp" />
-    <CustomBuild Include="lua-utils.h">
+    <CustomBuild Include="networkthread.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="lua.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="lualib.h">
+    <CustomBuild Include="uithread.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
