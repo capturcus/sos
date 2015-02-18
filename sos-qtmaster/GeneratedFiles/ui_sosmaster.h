@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sosmaster.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -46,7 +46,7 @@ public:
     {
         if (SOSMasterClass->objectName().isEmpty())
             SOSMasterClass->setObjectName(QStringLiteral("SOSMasterClass"));
-        SOSMasterClass->resize(744, 611);
+        SOSMasterClass->resize(720, 600);
         centralWidget = new QWidget(SOSMasterClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -87,7 +87,7 @@ public:
         SOSMasterClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SOSMasterClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 744, 21));
+        menuBar->setGeometry(QRect(0, 0, 720, 21));
         SOSMasterClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(SOSMasterClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

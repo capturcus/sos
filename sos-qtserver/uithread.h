@@ -1,7 +1,7 @@
 #ifndef UITHREAD_H
 #define UITHREAD_H
 
-#include <QThread>
+#include <QtCore\qthread.h>
 
 class UIThread : public QThread
 {

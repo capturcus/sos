@@ -1,29 +1,33 @@
 #ifndef SOSSLAVE_H
 #define SOSSLAVE_H
 
-#include <QtWidgets/QMainWindow>
+#include <QtWidgets\qmainwindow.h>
 #include <qstandarditemmodel.h>
-#include "qtcpsocket.h"
 
 #include "ui_sosslave.h"
+#include <QtWebSockets\qwebsocket.h>
 
 class SOSSlave : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	SOSSlave(QWidget *parent = 0);
+	SOSSlave(QWidget *parent = nullptr);
 	~SOSSlave();
-	void addProperty(QList<QString>*);
 
-private:
+protected:
 	Ui::SOSSlaveClass ui;
 	QStandardItemModel treeModel;
-	QTcpSocket* tcpSocket;
+	QWebSocket m_webSocket;
+	void addProperty(QList<QString>*);
 
+protected slots:
+	void onConnected();
+	void onTextMessageReceived(QString message);
+	void closed();
 	void connectToServer();
-	void readFromSocket();
-	int blockSize = 0;
+	void socketErrorHandler(QAbstractSocket::SocketError error);
+	
 };
 
 #endif // SOSSLAVE_H

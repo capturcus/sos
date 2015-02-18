@@ -43,15 +43,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_sosserver.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="networkthread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_networkthread.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_networkthread.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="uithread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -64,9 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="sosserver.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="networkthread.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="uithread.h">

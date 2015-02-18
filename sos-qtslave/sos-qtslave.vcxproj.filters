@@ -79,10 +79,8 @@
     <CustomBuild Include="objectwindow.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_objectwindow.h">
+    <CustomBuild Include="GeneratedFiles\ui_objectwindow.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
+    </CustomBuild>
   </ItemGroup>
 </Project>

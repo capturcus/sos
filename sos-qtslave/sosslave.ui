@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
-    <height>400</height>
+    <width>494</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,9 +23,34 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetMinimumSize</enum>
-      </property>
+      <item>
+       <widget class="QLabel" name="connectionLabel">
+        <property name="text">
+         <string>dupa</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Server Addres:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="connectButton">
+        <property name="text">
+         <string>Connect to server!</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -35,7 +60,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>432</width>
+     <width>494</width>
      <height>21</height>
     </rect>
    </property>

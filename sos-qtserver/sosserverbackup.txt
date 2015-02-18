@@ -1,21 +1,11 @@
-#include "networkthread.h"
+#include "sosserver.h"
 #include "qdebug.h"
-#include "qtcpserver.h"
-#include "qnetworkinterface.h"
-#include "qtcpsocket.h"
 
-NetworkThread::NetworkThread(QObject *parent)
-	: QThread(parent)
+SOSServer::SOSServer(QObject *parent)
+	: QObject(parent), uit(nullptr)
 {
+	uit.start();
 
-}
-
-NetworkThread::~NetworkThread()
-{
-
-}
-
-void NetworkThread::run() {
 	tcpServer = new QTcpServer();
 	if (!tcpServer->listen(QHostAddress::Any, 56321)) {
 		qDebug() << tr("Unable to start the server: %1.").arg(tcpServer->errorString());
@@ -24,20 +14,24 @@ void NetworkThread::run() {
 	QString ipAddress;
 	ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
 
-	connect(tcpServer, &QTcpServer::newConnection, this, &NetworkThread::newConnection);
+	connect(tcpServer, &QTcpServer::newConnection, this, &SOSServer::newConnection);
 
 	qDebug() << (tr("The server is running on\n\nIP: %1\nport: %2\n\n"
 		"Run the Fortune Client example now.")
 		.arg(ipAddress).arg(tcpServer->serverPort()));
-	tcpServer->waitForNewConnection(-1);
 }
 
-void NetworkThread::newConnection() {
+SOSServer::~SOSServer()
+{
+
+}
+
+void SOSServer::newConnection() {
 	qDebug() << "new connection!";
 	QByteArray block;
 	QDataStream out(&block, QIODevice::WriteOnly);
 	out << (quint16)0;
-	out << "DUPA QRWA";
+	out << QString("bullshit a lot of bullshit");
 	out.device()->seek(0);
 	out << (quint16)(block.size() - sizeof(quint16));
 
@@ -45,6 +39,7 @@ void NetworkThread::newConnection() {
 	connect(clientConnection, &QTcpSocket::disconnected, clientConnection, &QTcpSocket::deleteLater);
 
 	clientConnection->write(block);
+	clientConnection->waitForBytesWritten();
 	clientConnection->disconnectFromHost();
 	qDebug() << "disconnected";
 }

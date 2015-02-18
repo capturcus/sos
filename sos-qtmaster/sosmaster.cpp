@@ -1,7 +1,7 @@
 #include "sosmaster.h"
 #include <QtWidgets\qlineedit.h>
 #include <QtCore/QCoreApplication>
-#include <QDebug>
+#include "QtCore/qdebug.h"
 
 #include <stdio.h>
 

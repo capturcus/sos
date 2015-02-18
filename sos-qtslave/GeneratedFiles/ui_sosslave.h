@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sosslave.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,9 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -29,6 +33,11 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
+    QLabel *connectionLabel;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label;
+    QLineEdit *lineEdit;
+    QPushButton *connectButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -37,7 +46,7 @@ public:
     {
         if (SOSSlaveClass->objectName().isEmpty())
             SOSSlaveClass->setObjectName(QStringLiteral("SOSSlaveClass"));
-        SOSSlaveClass->resize(432, 400);
+        SOSSlaveClass->resize(494, 407);
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -52,14 +61,39 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setSizeConstraint(QLayout::SetMinimumSize);
+        connectionLabel = new QLabel(centralWidget);
+        connectionLabel->setObjectName(QStringLiteral("connectionLabel"));
+
+        verticalLayout->addWidget(connectionLabel);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        horizontalLayout->addWidget(label);
+
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        horizontalLayout->addWidget(lineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        connectButton = new QPushButton(centralWidget);
+        connectButton->setObjectName(QStringLiteral("connectButton"));
+
+        verticalLayout->addWidget(connectButton);
+
 
         verticalLayout_2->addLayout(verticalLayout);
 
         SOSSlaveClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SOSSlaveClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 432, 21));
+        menuBar->setGeometry(QRect(0, 0, 494, 21));
         SOSSlaveClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(SOSSlaveClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -76,6 +110,9 @@ public:
     void retranslateUi(QMainWindow *SOSSlaveClass)
     {
         SOSSlaveClass->setWindowTitle(QApplication::translate("SOSSlaveClass", "SOSSlave", 0));
+        connectionLabel->setText(QApplication::translate("SOSSlaveClass", "dupa", 0));
+        label->setText(QApplication::translate("SOSSlaveClass", "Server Addres:", 0));
+        connectButton->setText(QApplication::translate("SOSSlaveClass", "Connect to server!", 0));
     } // retranslateUi
 
 };

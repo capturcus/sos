@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include <QtCore/QCoreApplication>
 #include "sosserver.h"
 

@@ -2,22 +2,37 @@
 #include "objectwindow.h"
 #include "qmessagebox.h"
 
-SOSSlave::SOSSlave(QWidget *parent)
-	: QMainWindow(parent)
+const QString CONNECT_STRING = "Connect to server!";
+
+const QString LABEL_HEADER = "<style>\ntittle{ font-family:comic sans ms;\nfont-size:30pt;\n }\nbody {\nfont-family:comic sans ms;\nfont-size:20pt;\n}\n</style>\n"
+	"<center><tittle>SOS Slave</tittle></center><hr>";
+const QString LABEL_DISCONNECTED = "<style>\nhuehue{\ncolor:red; }\n</style>\n<body>Server Status: <huehue>DISCONNECTED</huehue></body>";
+const QString LABEL_CONNECTED = "\n<style>\nhuehue{ \ncolor:green; }\n</style>\n<body>Server Status: <huehue>CONNECTED</huehue></body>";
+const QString LABEL_TRYING = "\n<style>\nhuehue{ \ncolor:blue; }\n</style>\n<body>Server Status: <huehue>Connecting...</huehue></body>";
+
+SOSSlave::SOSSlave(QWidget *p)
+	: QMainWindow(p)
 {
 	ui.setupUi(this);
 	adjustSize();
-	ObjectWindow* o = new ObjectWindow(&treeModel);
+	/*ObjectWindow* o = new ObjectWindow(&treeModel);
 	o->show();
 	QList<QString> list = {"root","child1","child2"};
 	addProperty(&list);
 	list = { "root", "child1", "sibling1" };
 	addProperty(&list);
 	list = { "root", "sibling1", "sibling1" };
-	addProperty(&list);
-	tcpSocket = new QTcpSocket();
-	connect(tcpSocket, &QTcpSocket::connected, this, &SOSSlave::readFromSocket);
-	connectToServer();
+	addProperty(&list);*/
+	ui.connectionLabel->setTextFormat(Qt::TextFormat::RichText);
+	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
+
+	ui.connectButton->setText(CONNECT_STRING);
+	connect(ui.connectButton, &QPushButton::clicked, this, &SOSSlave::connectToServer);
+
+	connect(&m_webSocket, &QWebSocket::connected, this, &SOSSlave::onConnected);
+	connect(&m_webSocket, &QWebSocket::disconnected, this, &SOSSlave::closed);
+	connect(&m_webSocket, static_cast<void (QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
+		this, static_cast<void (SOSSlave::*)(QAbstractSocket::SocketError)>(&SOSSlave::socketErrorHandler));
 }
 
 SOSSlave::~SOSSlave()
@@ -50,32 +65,26 @@ void SOSSlave::addProperty(QList<QString>* list) {
 	treeAdd(list, treeModel.invisibleRootItem());
 }
 
-void SOSSlave::connectToServer() {
-	tcpSocket->abort();
-	tcpSocket->connectToHost("localhost", 56321);
+void SOSSlave::onConnected(){
+	ui.connectionLabel->setText(LABEL_HEADER + LABEL_CONNECTED);
+	connect(&m_webSocket, &QWebSocket::textMessageReceived,
+		this, &SOSSlave::onTextMessageReceived);
+	m_webSocket.sendTextMessage(QStringLiteral("Hello, world!"));
+}
+void SOSSlave::onTextMessageReceived(QString message){
+	QMessageBox::information(this, "huehue", QString("Message received: %1").arg(message));
 }
 
-void SOSSlave::readFromSocket() {
-	QMessageBox box;
-	box.setText("reading from socket!");
-	box.exec();
-	box.setText(QString("bytes available: %1").arg(tcpSocket->bytesAvailable()));
-	box.exec();
-	QDataStream in(tcpSocket);
+void SOSSlave::closed() {
+	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
+}
 
-	if (blockSize == 0) {
-		if (tcpSocket->bytesAvailable() < (int)sizeof(quint16))
-			return;
+void SOSSlave::connectToServer() {
+	ui.connectionLabel->setText(LABEL_HEADER + LABEL_TRYING);
+	m_webSocket.open(QUrl(QString("ws://")+ui.lineEdit->text()+":56321"));
+}
 
-		in >> blockSize;
-	}
-
-	if (tcpSocket->bytesAvailable() < blockSize)
-		return;
-
-	QString text;
-	in >> text;
-
-	box.setText(text);
-	box.exec();
+void SOSSlave::socketErrorHandler(QAbstractSocket::SocketError error) {
+	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
+	QMessageBox::information(this, "Error!", QString("ERROR OCCURED!\n")+m_webSocket.errorString());
 }

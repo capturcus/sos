@@ -93,15 +93,15 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include;.\GeneratedFiles\$(ConfigurationName);D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;D:\qt5-5.4.0-vs2013\qt5-x64-shared-debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\qt5-5.4.0-vs2013\qt5-x64-shared-debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\qtmaind.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Cored.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Guid.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Networkd.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Networkd.lib;Qt5WebSocketsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,10 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\Debug\moc_networkthread.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_sosserver.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -148,10 +144,6 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_uithread.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_networkthread.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_sosserver.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -162,7 +154,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="networkthread.cpp" />
     <ClCompile Include="sosserver.cpp" />
     <ClCompile Include="uithread.cpp" />
   </ItemGroup>
@@ -182,26 +173,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing sosserver.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="networkthread.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing networkthread.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing networkthread.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing networkthread.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing networkthread.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
     </CustomBuild>
