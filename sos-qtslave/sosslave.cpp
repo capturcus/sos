@@ -33,6 +33,8 @@ SOSSlave::SOSSlave(QWidget *p)
 	connect(&m_webSocket, &QWebSocket::disconnected, this, &SOSSlave::closed);
 	connect(&m_webSocket, static_cast<void (QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
 		this, static_cast<void (SOSSlave::*)(QAbstractSocket::SocketError)>(&SOSSlave::socketErrorHandler));
+
+	connect(ui.lineEdit, &QLineEdit::returnPressed, this, &SOSSlave::connectToServer);
 }
 
 SOSSlave::~SOSSlave()

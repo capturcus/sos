@@ -1,10 +1,12 @@
 #ifndef SOSMASTER_H
 #define SOSMASTER_H
 
+#include <Windows.h>
+#undef min
 #include <QtWidgets/QMainWindow>
 #include "ui_sosmaster.h"
 #include "lua-utils.h"
-#include <Windows.h>
+#include <QtWebSockets\qwebsocket.h>
 
 class SOSMaster : public QMainWindow
 {
@@ -20,8 +22,15 @@ public:
 
 private:
 	lua_State* L = nullptr;
-
 	HANDLE readPipe;
+	QWebSocket m_socket;
+
+private slots:
+	void onConnected();
+	void onTextMessageReceived(QString message);
+	void closed();
+	void connectToServer();
+	void socketErrorHandler(QAbstractSocket::SocketError error);
 };
 
 #endif // SOSMASTER_H

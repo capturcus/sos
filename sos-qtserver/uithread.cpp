@@ -13,5 +13,6 @@ UIThread::~UIThread()
 }
 
 void UIThread::run() {
-	qDebug() << "tyleczek";
+	qDebug() << "Server started.";
+	QString line;
 }

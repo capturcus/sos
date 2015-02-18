@@ -197,6 +197,9 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
