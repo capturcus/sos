@@ -45,6 +45,11 @@ SOSMaster::SOSMaster(QWidget *parent)
 
 	L = luaL_newstate();
 	luaL_openlibs(L);
+	lua_register(L, "printRec", [](lua_State * L) -> int{
+		printLuaValue(L, -1);
+		lua_pop(L, 1);
+		return 0;
+	});
 
 	readPipe = redirectStdout();
 

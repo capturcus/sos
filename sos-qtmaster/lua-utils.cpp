@@ -2,8 +2,15 @@
 
 #pragma comment(lib, "lua.lib")
 
-void printLuaValue(lua_State* L, int i){
+static inline void printPadding(int pad){
+	while (pad--)
+		putchar(' ');
+}
+
+void printLuaValue(lua_State* L, int i, int indent){
 	int t = lua_type(L, i);
+
+	printPadding(indent);
 	switch (t) {
 
 	case LUA_TSTRING:  /* strings */
@@ -16,6 +23,18 @@ void printLuaValue(lua_State* L, int i){
 
 	case LUA_TNUMBER:  /* numbers */
 		printf("%g", lua_tonumber(L, i));
+		break;
+
+	case LUA_TTABLE:
+		printf("[TABLE START]\n");
+		traverseLuaTable(L, [=](lua_State * L){
+			printLuaValue(L, -2, indent + 2);
+			printf(" => ");
+			printLuaValue(L, -1, indent + 2);
+			putchar('\n');
+		});
+		printPadding(indent);
+		printf("[TABLE END]");
 		break;
 
 	default:  /* other values */
