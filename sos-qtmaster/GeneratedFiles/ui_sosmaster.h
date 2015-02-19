@@ -20,6 +20,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -32,6 +33,7 @@ class Ui_SOSMasterClass
 {
 public:
     QAction *actionConnect_to_server;
+    QAction *actionLoadLua;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
@@ -42,6 +44,7 @@ public:
     QLineEdit *serverAddress;
     QLabel *label;
     QMenuBar *menuBar;
+    QMenu *menuFile;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -52,6 +55,8 @@ public:
         SOSMasterClass->resize(628, 616);
         actionConnect_to_server = new QAction(SOSMasterClass);
         actionConnect_to_server->setObjectName(QStringLiteral("actionConnect_to_server"));
+        actionLoadLua = new QAction(SOSMasterClass);
+        actionLoadLua->setObjectName(QStringLiteral("actionLoadLua"));
         centralWidget = new QWidget(SOSMasterClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -103,6 +108,8 @@ public:
         menuBar = new QMenuBar(SOSMasterClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 628, 21));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         SOSMasterClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(SOSMasterClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -110,6 +117,9 @@ public:
         statusBar = new QStatusBar(SOSMasterClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         SOSMasterClass->setStatusBar(statusBar);
+
+        menuBar->addAction(menuFile->menuAction());
+        menuFile->addAction(actionLoadLua);
 
         retranslateUi(SOSMasterClass);
 
@@ -120,8 +130,10 @@ public:
     {
         SOSMasterClass->setWindowTitle(QApplication::translate("SOSMasterClass", "SOSMaster", 0));
         actionConnect_to_server->setText(QApplication::translate("SOSMasterClass", "Connect to server...", 0));
+        actionLoadLua->setText(QApplication::translate("SOSMasterClass", "Load Lua file...", 0));
         luaOutput->setText(QString());
         label->setText(QApplication::translate("SOSMasterClass", "Type in the server address and press ENTER:", 0));
+        menuFile->setTitle(QApplication::translate("SOSMasterClass", "File", 0));
     } // retranslateUi
 
 };

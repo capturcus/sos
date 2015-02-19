@@ -4,6 +4,7 @@
 #include "uithread.h"
 #include <QtCore\qobject.h>
 #include <QtNetwork\qsslerror.h>
+#include <QtCore\qset.h>
 
 QT_FORWARD_DECLARE_CLASS(QWebSocketServer)
 QT_FORWARD_DECLARE_CLASS(QWebSocket)
@@ -15,6 +16,9 @@ class SOSServer : public QObject
 public:
 	SOSServer(QObject *parent);
 	~SOSServer();
+	QWebSocket* getMaster();
+	const QSet<QWebSocket*>& getUndecidedRole();
+	const QSet<QWebSocket*>& getSlaves();
 
 public slots:
 	void onNewConnection();
@@ -24,11 +28,12 @@ public slots:
 	void onSslErrors(const QList<QSslError> &errors);
 	void closed();
 
-private:
+protected:
 	QWebSocketServer *m_pWebSocketServer;
-	QList<QWebSocket *> m_clients;
-	QWebSocket* m_masterSocket;
 	UIThread uit;
+	QSet<QWebSocket*> undecidedRole;
+	QSet<QWebSocket*> slaves;
+	QWebSocket* master = nullptr;
 };
 
 #endif // SOSSERVER_H

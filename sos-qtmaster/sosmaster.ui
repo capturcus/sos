@@ -69,6 +69,13 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoadLua"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -82,6 +89,11 @@
   <action name="actionConnect_to_server">
    <property name="text">
     <string>Connect to server...</string>
+   </property>
+  </action>
+  <action name="actionLoadLua">
+   <property name="text">
+    <string>Load Lua file...</string>
    </property>
   </action>
  </widget>
