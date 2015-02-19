@@ -76,15 +76,15 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include;.\GeneratedFiles\$(ConfigurationName);D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;D:\Qt\5.4\msvc2013_64\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.4\msvc2013_64\include\QtCore;D:\Qt\5.4\msvc2013_64\include\QtGui;D:\Qt\5.4\msvc2013_64\include\QtNetwork;D:\Qt\5.4\msvc2013_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Qt\5.4\msvc2013_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\qtmaind.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Cored.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Guid.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Networkd.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Qt\5.4\msvc2013_64\lib\qtmaind.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Cored.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Guid.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Networkd.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -101,7 +101,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>D:\qt5-5.4.0-vs2013\qt5-x64-shared-debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Networkd.lib;Qt5WebSocketsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Qt\5.4\msvc2013_64\lib\qtmaind.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Cored.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Guid.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Widgetsd.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Networkd.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5WebSocketsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -109,15 +109,15 @@
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include;.\GeneratedFiles\$(ConfigurationName);D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;D:\Qt\5.4\msvc2013_64\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.4\msvc2013_64\include\QtCore;D:\Qt\5.4\msvc2013_64\include\QtGui;D:\Qt\5.4\msvc2013_64\include\QtNetwork;D:\Qt\5.4\msvc2013_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Qt\5.4\msvc2013_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\qtmain.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Core.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Gui.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Network.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Qt\5.4\msvc2013_64\lib\qtmain.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Core.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Gui.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Network.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -125,15 +125,15 @@
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include;.\GeneratedFiles\$(ConfigurationName);D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork;D:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;D:\Qt\5.4\msvc2013_64\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.4\msvc2013_64\include\QtCore;D:\Qt\5.4\msvc2013_64\include\QtGui;D:\Qt\5.4\msvc2013_64\include\QtNetwork;D:\Qt\5.4\msvc2013_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Qt\5.4\msvc2013_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\qtmain.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Core.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Gui.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Network.lib;D:\qt-everywhere-opensource-src-5.2.1\qtbase\lib\Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Qt\5.4\msvc2013_64\lib\qtmain.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Core.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Gui.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Network.lib;D:\Qt\5.4\msvc2013_64\lib\Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -159,42 +159,42 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="sosserver.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing sosserver.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing sosserver.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing sosserver.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing sosserver.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="uithread.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing uithread.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing uithread.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing uithread.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.4\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing uithread.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\qt-everywhere-opensource-src-5.2.1\qtbase\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtCore" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtGui" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtNetwork" "-ID:\qt-everywhere-opensource-src-5.2.1\qtbase\include\QtWidgets"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\Qt\5.4\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB "-I." "-ID:\Qt\5.4\msvc2013_64\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-ID:\Qt\5.4\msvc2013_64\include\QtCore" "-ID:\Qt\5.4\msvc2013_64\include\QtGui" "-ID:\Qt\5.4\msvc2013_64\include\QtNetwork" "-ID:\Qt\5.4\msvc2013_64\include\QtWidgets"</Command>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
