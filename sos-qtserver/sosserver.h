@@ -27,6 +27,7 @@ public slots:
 private:
 	QWebSocketServer *m_pWebSocketServer;
 	QList<QWebSocket *> m_clients;
+	QWebSocket* m_masterSocket;
 	UIThread uit;
 };
 

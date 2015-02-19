@@ -12,6 +12,7 @@ public:
 	~UIThread();
 
 	void run();
+
 private:
 	
 };
