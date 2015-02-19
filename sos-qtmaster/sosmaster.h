@@ -20,17 +20,22 @@ public:
 
 	Ui::SOSMasterClass ui;
 
-private:
+protected:
+	bool eventFilter(QObject* obj, QEvent *e);
+
 	lua_State* L = nullptr;
 	HANDLE readPipe;
 	QWebSocket m_socket;
+	int historyDepth = 0;
+	QVector<QString> history;
 
-private slots:
+protected slots:
 	void onConnected();
 	void onTextMessageReceived(QString message);
 	void closed();
 	void connectToServer();
 	void socketErrorHandler(QAbstractSocket::SocketError error);
+	void appendLineToLuaOutput(const QString&);
 };
 
 #endif // SOSMASTER_H

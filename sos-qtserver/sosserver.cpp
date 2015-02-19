@@ -5,12 +5,12 @@
 #include <QtNetwork/QSslKey>
 #include <QtWebSockets\qwebsocket.h>
 #include <QtWebSockets\qwebsocketserver.h>
+#include <QtWidgets\qapplication.h>
 
 SOSServer::SOSServer(QObject *parent)
-	: QObject(parent), uit(nullptr),
+	: QObject(parent), uit(this),
 	m_pWebSocketServer(new QWebSocketServer(QStringLiteral("Echo Server"),
-	QWebSocketServer::NonSecureMode, this)),
-	m_clients()
+	QWebSocketServer::NonSecureMode, this))
 {
 	uit.start();
 	if (m_pWebSocketServer->listen(QHostAddress::Any, 56321)) {
@@ -18,6 +18,10 @@ SOSServer::SOSServer(QObject *parent)
 		connect(m_pWebSocketServer, &QWebSocketServer::newConnection,
 			this, &SOSServer::onNewConnection);
 		connect(m_pWebSocketServer, &QWebSocketServer::closed, this, &SOSServer::closed);
+	}
+	else {
+		qDebug() << "Failed to initiate server." << m_pWebSocketServer->errorString();
+		qApp->exit();
 	}
 }
 
@@ -30,15 +34,14 @@ void SOSServer::onNewConnection()
 {
 	QWebSocket *pSocket = m_pWebSocketServer->nextPendingConnection();
 
-	qDebug() << "Client connected:" << pSocket->peerName() << pSocket->origin() << pSocket->peerAddress();
+	qDebug() << "Client connected!";
 
 	connect(pSocket, &QWebSocket::textMessageReceived, this, &SOSServer::processTextMessage);
 	connect(pSocket, &QWebSocket::binaryMessageReceived,
 		this, &SOSServer::processBinaryMessage);
 	connect(pSocket, &QWebSocket::disconnected, this, &SOSServer::socketDisconnected);
-	//connect(pSocket, &QWebSocket::pong, this, &SslEchoServer::processPong);
 
-	m_clients << pSocket;
+	undecidedRole.insert(pSocket);
 }
 
 void SOSServer::processTextMessage(QString message)
@@ -46,7 +49,26 @@ void SOSServer::processTextMessage(QString message)
 	QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
 	if (pClient)
 	{
-		pClient->sendTextMessage(message);
+		if (undecidedRole.contains(pClient)){
+			if (message == "master"){
+				master = pClient;
+				master->sendTextMessage("master");
+				qDebug() << "Master set.";
+			}
+			else if (message == "slave"){
+				slaves.insert(pClient);
+				pClient->sendTextMessage("slave");
+				qDebug() << "Slave added.";
+			}
+			undecidedRole.remove(pClient);
+		}
+		else
+		{
+			qDebug() << "Received a text message out of context: " << message;
+		}
+	}
+	else {
+		qDebug() << "Failed to cast sender to QWebSocket.";
 	}
 }
 
@@ -55,7 +77,19 @@ void SOSServer::processBinaryMessage(QByteArray message)
 	QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
 	if (pClient)
 	{
-		pClient->sendBinaryMessage(message);
+		if (pClient == master){
+			for (QWebSocket* s : slaves)
+			{
+				s->sendBinaryMessage(message);
+			}
+		}
+		else if (slaves.contains(pClient)){
+			master->sendBinaryMessage(message);
+		}
+		else
+		{
+			qDebug() << "Received binary message from unknown sender.";
+		}
 	}
 }
 
@@ -65,7 +99,19 @@ void SOSServer::socketDisconnected()
 	QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
 	if (pClient)
 	{
-		m_clients.removeAll(pClient);
+		if (pClient == master)
+		{
+			qDebug() << "Master disconnected!";
+			master = nullptr;
+		}
+		else if (slaves.contains(pClient))
+		{
+			qDebug() << "A slave disconnected!";
+			slaves.remove(pClient);
+		}
+		else {
+			undecidedRole.remove(pClient);
+		}
 		pClient->deleteLater();
 	}
 }
@@ -77,4 +123,14 @@ void SOSServer::onSslErrors(const QList<QSslError> &)
 
 void SOSServer::closed() {
 	qDebug() << "closed";
+}
+
+QWebSocket* SOSServer::getMaster(){
+	return master;
+}
+const QSet<QWebSocket*>& SOSServer::getUndecidedRole(){
+	return undecidedRole;
+}
+const QSet<QWebSocket*>& SOSServer::getSlaves(){
+	return slaves;
 }
