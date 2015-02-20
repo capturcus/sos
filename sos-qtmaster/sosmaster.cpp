@@ -98,7 +98,6 @@ void serializeWorld(lua_State* L){
 		recursion.append(luaValueToString(L, -2));
 		traverseLuaTable(L, serializeWorld);
 		recursion.pop_back();
-		return;
 	}
 	QString key;
 	for (const QString& s : recursion)
@@ -106,7 +105,10 @@ void serializeWorld(lua_State* L){
 		key += (s + ".");
 	}
 	key += luaValueToString(L, -2);
-	world[key] = luaValueToString(L, -1);
+	if (valueType != LUA_TTABLE)
+		world[key] = luaValueToString(L, -1);
+	else
+		world[key] = "";	// HAXXX
 }
 
 void SOSMaster::returnPressed() {
@@ -146,15 +148,26 @@ void SOSMaster::returnPressed() {
 		auto oldIt = oldWorld.begin();
 		auto it = world.begin();
 
-		while (oldIt != oldWorld.end() && it != world.end())
+		auto compareIterators = [&]() -> int {
+			if (oldIt == oldWorld.end())
+				return -1;
+			if (it == world.end())
+				return 1;
+
+			return QString::compare(it.key(), oldIt.key());
+		};
+
+		while (oldIt != oldWorld.end() || it != world.end())
 		{
-			if (oldIt == oldWorld.end() || oldIt.key() > it.key())
+			int cmp = compareIterators();
+
+			if (cmp < 0)
 			{
 				// Dodajemy coœ
 				*stream << (qint8)1 << it.key() << it.value();
 				it++;
 			}
-			else if (it == world.end() || it.key() > oldIt.key())
+			else if (cmp > 0)
 			{
 				// Kasujemy coœ
 				*stream << (qint8)-1 << oldIt.key();

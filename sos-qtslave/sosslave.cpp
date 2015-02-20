@@ -48,7 +48,7 @@ SOSSlave::~SOSSlave()
 
 }
 
-void treeAdd(QList<QString>& list, QStandardItem* it){
+void SOSSlave::treeAdd(QList<QString>& list, QStandardItem* it){
 	if (list.isEmpty())
 		return;
 	QString name = list.front();
@@ -69,9 +69,10 @@ void treeAdd(QList<QString>& list, QStandardItem* it){
 	}
 }
 
-void treeRemove(QList<QString> & list, QStandardItem* it){
+void SOSSlave::treeRemove(QList<QString> & list, QStandardItem* it){
 	if (list.isEmpty()) {
-		it->parent()->removeRow(it->index().row());
+		auto parent = it->parent() ? it->parent() : treeModel.invisibleRootItem();
+		parent->removeRow(it->index().row());
 		return;
 	}
 
