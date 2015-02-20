@@ -18,10 +18,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -39,8 +37,6 @@ public:
     QLineEdit *lineEdit;
     QPushButton *connectButton;
     QPushButton *showObjectWindowButton;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *SOSSlaveClass)
@@ -97,13 +93,6 @@ public:
         verticalLayout_2->addLayout(verticalLayout);
 
         SOSSlaveClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(SOSSlaveClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 494, 21));
-        SOSSlaveClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(SOSSlaveClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        SOSSlaveClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(SOSSlaveClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         SOSSlaveClass->setStatusBar(statusBar);

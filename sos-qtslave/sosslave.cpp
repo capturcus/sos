@@ -2,6 +2,7 @@
 #include "objectwindow.h"
 #include "qmessagebox.h"
 #include "..\sos-qtserver\Common.h"
+#include "treenodewidget.h"
 
 const QString CONNECT_STRING = "Connect to server!";
 
@@ -17,13 +18,12 @@ SOSSlave::SOSSlave(QWidget *p)
 	ui.setupUi(this);
 	adjustSize();
 
-	/*
 	QList<QString> list = { "root", "child1", "child2" };
 	addProperty(list);
 	list = { "root", "child1", "sibling1" };
 	addProperty(list);
 	list = { "root", "sibling1", "sibling1" };
-	addProperty(list);*/
+	addProperty(list);
 
 	ui.connectionLabel->setTextFormat(Qt::TextFormat::RichText);
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);

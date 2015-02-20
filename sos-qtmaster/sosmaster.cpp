@@ -209,7 +209,7 @@ bool SOSMaster::eventFilter(QObject* obj, QEvent *event)
 }
 
 void SOSMaster::openLuaFile() {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Files (*.*)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Lua files (*.lua)"));
 	int res = luaL_dofile(L, fileName.toStdString().c_str());
 	if (res != 0){
 		const char* err = lua_tostring(L, -1);

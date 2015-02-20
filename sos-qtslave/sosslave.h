@@ -29,7 +29,6 @@ protected slots:
 	void connectToServer();
 	void socketErrorHandler(QAbstractSocket::SocketError error);
 	void showRootObjectWindow();
-	
 };
 
 #endif // SOSSLAVE_H
