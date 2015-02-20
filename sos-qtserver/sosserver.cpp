@@ -37,8 +37,7 @@ void SOSServer::onNewConnection()
 	qDebug() << "Client connected!";
 
 	connect(pSocket, &QWebSocket::textMessageReceived, this, &SOSServer::processTextMessage);
-	connect(pSocket, &QWebSocket::binaryMessageReceived,
-		this, &SOSServer::processBinaryMessage);
+	connect(pSocket, &QWebSocket::binaryMessageReceived, this, &SOSServer::processBinaryMessage);
 	connect(pSocket, &QWebSocket::disconnected, this, &SOSServer::socketDisconnected);
 
 	undecidedRole.insert(pSocket);

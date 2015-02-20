@@ -22,6 +22,7 @@ public:
 
 protected:
 	bool eventFilter(QObject* obj, QEvent *e);
+	void flushLua();
 
 	lua_State* L = nullptr;
 	HANDLE readPipe;
@@ -36,6 +37,7 @@ protected slots:
 	void connectToServer();
 	void socketErrorHandler(QAbstractSocket::SocketError error);
 	void appendLineToLuaOutput(const QString&);
+	void openLuaFile();
 };
 
 #endif // SOSMASTER_H

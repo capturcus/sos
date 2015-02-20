@@ -24,6 +24,7 @@ protected:
 protected slots:
 	void onConnected();
 	void onTextMessageReceived(QString message);
+	void onBinaryMessageReceived(QByteArray message);
 	void closed();
 	void connectToServer();
 	void socketErrorHandler(QAbstractSocket::SocketError error);

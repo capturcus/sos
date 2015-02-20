@@ -1,4 +1,5 @@
 #include "sosmaster.h"
+#include "lua-utils.h"
 #include <QtWidgets\qlineedit.h>
 #include <QtCore/QCoreApplication>
 #include "QtCore/qdebug.h"
@@ -10,6 +11,8 @@
 
 #include "QtWidgets\qmessagebox.h"
 #include "QtGui\QKeyEvent"
+#include "QtWidgets\qfiledialog.h"
+#include "..\sos-qtserver\Common.h"
 
 const int MAX_LEN = 40;
 const int MAX_LINE_COUNT = 40;
@@ -55,11 +58,50 @@ SOSMaster::SOSMaster(QWidget *parent)
 	connect(&m_socket, &QWebSocket::disconnected, this, &SOSMaster::closed);
 	connect(&m_socket, static_cast<void (QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
 		this, static_cast<void (SOSMaster::*)(QAbstractSocket::SocketError)>(&SOSMaster::socketErrorHandler));
+
+	connect(ui.actionLoadLua, &QAction::triggered, this, &SOSMaster::openLuaFile);
+
+	luaL_dostring(L, "WORLD = {}");
 }
 
 SOSMaster::~SOSMaster()
 {
 	lua_close(L);
+}
+
+QList<QString> recursion;
+QMap<QString, QString> world;
+
+bool isWeirdType(int n){
+	if (n == LUA_TTHREAD || 
+		n == LUA_TUSERDATA || 
+		n == LUA_TLIGHTUSERDATA ||
+		n == LUA_TFUNCTION ||
+		n == LUA_TNIL)
+		return true;
+	return false;
+}
+
+void serializeWorld(lua_State* L){
+	int valueType = lua_type(L, -1);
+	int keyType = lua_type(L, -2);
+	if (isWeirdType(keyType) || keyType == LUA_TTABLE)
+		return;
+	if (isWeirdType(valueType))
+		return;
+	if (valueType == LUA_TTABLE){
+		recursion.append(luaValueToString(L, -2));
+		traverseLuaTable(L, serializeWorld);
+		recursion.pop_back();
+		return;
+	}
+	QString key;
+	for (const QString& s : recursion)
+	{
+		key += (s + ".");
+	}
+	key += luaValueToString(L, -2);
+	world[key] = luaValueToString(L, -1);
 }
 
 void SOSMaster::returnPressed() {
@@ -77,18 +119,24 @@ void SOSMaster::returnPressed() {
 	int res = luaL_dostring(L, text.toStdString().c_str());
 	appendLineToLuaOutput(QString(">") + text);
 
-	char buffer[1024] = { 0 };
-
 	printf("#");
-
-	ReadFile(readPipe, buffer, 1024, 0, 0);
-
-	appendLineToLuaOutput(QString(buffer));
+	flushLua();
 
 	if (res != 0){
 		const char* err = lua_tostring(L, -1);
 		appendLineToLuaOutput(QString(err));
 		lua_pop(L, 1);
+	}
+	else if (m_socket.state() == QAbstractSocket::SocketState::ConnectedState){
+		traverseGlobalLuaTable(L, "WORLD", serializeWorld);
+		QByteArray buffer;
+		QDataStream *stream = new QDataStream(&buffer, QIODevice::WriteOnly);
+		*stream << (int)MESSAGE_TYPE::WORLD;
+		*stream << world;
+		delete stream;
+		m_socket.sendBinaryMessage(buffer);
+		recursion.clear();
+		world.clear();
 	}
 }
 
@@ -158,4 +206,22 @@ bool SOSMaster::eventFilter(QObject* obj, QEvent *event)
 		return false;
 	}
 	return QMainWindow::eventFilter(obj, event);
+}
+
+void SOSMaster::openLuaFile() {
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Files (*.*)"));
+	int res = luaL_dofile(L, fileName.toStdString().c_str());
+	if (res != 0){
+		const char* err = lua_tostring(L, -1);
+		printf(err);
+		lua_pop(L, 1);
+	}
+	printf("#");
+	flushLua();
+}
+
+void SOSMaster::flushLua(){
+	char buffer[1024] = { 0 };
+	ReadFile(readPipe, buffer, 1024, 0, 0);
+	appendLineToLuaOutput(QString(buffer));
 }

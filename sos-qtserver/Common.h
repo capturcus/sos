@@ -1,0 +1,4 @@
+enum class MESSAGE_TYPE {
+	WORLD = 0,
+	ALGORITHM
+};
