@@ -20,6 +20,7 @@ protected:
 	QStandardItemModel treeModel;
 	QWebSocket m_webSocket;
 	void addProperty(const QList<QString>& list);
+	void removeProperty(const QList<QString>& list);
 
 protected slots:
 	void onConnected();

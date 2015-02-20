@@ -26,6 +26,8 @@ SOSSlave::SOSSlave(QWidget *p)
 	addProperty(list);
 	list = { "root", "sibling1", "sibling1" };
 	addProperty(list);
+	list = { "root", "sibling1" };
+	removeProperty(list);
 
 	ui.connectionLabel->setTextFormat(Qt::TextFormat::RichText);
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
@@ -69,8 +71,29 @@ void treeAdd(QList<QString>& list, QStandardItem* it){
 	}
 }
 
+void treeRemove(QList<QString> & list, QStandardItem* it){
+	if (list.isEmpty()) {
+		it->parent()->removeRow(it->index().row());
+		return;
+	}
+
+	QString name = list.front();
+	list.pop_front();
+
+	for (int i = 0; i < it->rowCount(); i++) {
+		if (name == it->child(i)->text()) {
+			treeRemove(list, it->child(i));
+			return;
+		}
+	}
+}
+
 void SOSSlave::addProperty(const QList<QString>& list) {
 	treeAdd(QList<QString>(list), treeModel.invisibleRootItem());
+}
+
+void SOSSlave::removeProperty(const QList<QString>& list) {
+	treeRemove(QList<QString>(list), treeModel.invisibleRootItem());
 }
 
 void SOSSlave::onConnected(){
@@ -108,13 +131,37 @@ void SOSSlave::onBinaryMessageReceived(QByteArray message){
 	int type;
 	s >> type;
 	if ((MESSAGE_TYPE)type == MESSAGE_TYPE::WORLD){
-		s >> map;
+		/*s >> map;
 		treeModel.clear();
 		auto it = map.begin();
 		while (it != map.end()){
 			QStringList list = it.key().split(QString("."));
 			addProperty(list);
 			it++;
+		}*/
+
+		qint8 cmd;
+
+		while (true)
+		{
+			s >> cmd;
+			if (cmd == 0)
+				break;	// Koniec
+
+			if (cmd == 1)
+			{
+				// Dodanie wartoœci
+				QString key, value;
+				s >> key >> value;
+				addProperty(key.split('.'));
+			}
+			else if (cmd == -1)
+			{
+				// Wywalenie wartoœci
+				QString key;
+				s >> key;
+				removeProperty(key.split('.'));
+			}
 		}
 	}
 	else {

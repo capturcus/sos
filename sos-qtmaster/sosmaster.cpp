@@ -128,15 +128,47 @@ void SOSMaster::returnPressed() {
 		lua_pop(L, 1);
 	}
 	else if (m_socket.state() == QAbstractSocket::SocketState::ConnectedState){
+		auto oldWorld = world;
+		world.clear();
+
 		traverseGlobalLuaTable(L, "WORLD", serializeWorld);
+
 		QByteArray buffer;
 		QDataStream *stream = new QDataStream(&buffer, QIODevice::WriteOnly);
 		*stream << (int)MESSAGE_TYPE::WORLD;
-		*stream << world;
+		//*stream << world;
+
+		auto oldIt = oldWorld.begin();
+		auto it = world.begin();
+
+		while (oldIt != oldWorld.end() && it != world.end())
+		{
+			if (oldIt == oldWorld.end() || oldIt.key() > it.key())
+			{
+				// Dodajemy coœ
+				*stream << (qint8)1 << it.key() << it.value();
+				it++;
+			}
+			else if (it == world.end() || it.key() > oldIt.key())
+			{
+				// Kasujemy coœ
+				*stream << (qint8)-1 << oldIt.key();
+				oldIt++;
+			}
+			else
+			{
+				// Bez zmian
+				it++;
+				oldIt++;
+			}
+		}
+
+		*stream << (qint8)0;
+
 		delete stream;
 		m_socket.sendBinaryMessage(buffer);
 		recursion.clear();
-		world.clear();
+		
 	}
 }
 
