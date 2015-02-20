@@ -20,14 +20,14 @@ SOSSlave::SOSSlave(QWidget *p)
 	ui.setupUi(this);
 	adjustSize();
 
-	QList<QString> list = { "root", "child1", "child2" };
-	addProperty(list);
+	/*QList<QString> list = { "root", "child1", "child2" };
+	addProperty(list, "v1");
 	list = { "root", "child1", "sibling1" };
-	addProperty(list);
+	addProperty(list, "v2");
 	list = { "root", "sibling1", "sibling1" };
-	addProperty(list);
+	addProperty(list, "v3");
 	list = { "root", "sibling1" };
-	removeProperty(list);
+	removeProperty(list);*/
 
 	ui.connectionLabel->setTextFormat(Qt::TextFormat::RichText);
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
@@ -50,16 +50,18 @@ SOSSlave::~SOSSlave()
 
 }
 
-void SOSSlave::treeAdd(QList<QString>& list, QStandardItem* it){
-	if (list.isEmpty())
+void treeAdd(QList<QString>& list, QStandardItem* it, const QString& value){
+	if (list.isEmpty()){
+		it->setData(value, 42);
 		return;
+	}
 	QString name = list.front();
 	list.pop_front();
 	bool added = false;
 	for (int i = 0; i < it->rowCount(); i++)
 	{
 		if (name == it->child(i)->text()){
-			treeAdd(list, it->child(i));
+			treeAdd(list, it->child(i), value);
 			added = true;
 			break;
 		}
@@ -67,7 +69,7 @@ void SOSSlave::treeAdd(QList<QString>& list, QStandardItem* it){
 	if (!added){
 		auto newit = new QStandardItem(name);
 		it->appendRow(newit);
-		treeAdd(list, newit);
+		treeAdd(list, newit, value);
 	}
 }
 
@@ -89,8 +91,8 @@ void SOSSlave::treeRemove(QList<QString> & list, QStandardItem* it){
 	}
 }
 
-void SOSSlave::addProperty(const QList<QString>& list) {
-	treeAdd(QList<QString>(list), treeModel.invisibleRootItem());
+void SOSSlave::addProperty(const QList<QString>& list, const QString& s) {
+	treeAdd(QList<QString>(list), treeModel.invisibleRootItem(), s);
 }
 
 void SOSSlave::removeProperty(const QList<QString>& list) {
@@ -137,7 +139,7 @@ void SOSSlave::onBinaryMessageReceived(QByteArray message){
 		auto it = map.begin();
 		while (it != map.end()){
 			QStringList list = it.key().split(QString("."));
-			addProperty(list);
+			addProperty(list, it.value());
 			it++;
 		}*/
 
@@ -154,7 +156,7 @@ void SOSSlave::onBinaryMessageReceived(QByteArray message){
 				// Dodanie wartoœci
 				QString key, value;
 				s >> key >> value;
-				addProperty(key.split('.'));
+				addProperty(key.split('.'), value);
 			}
 			else if (cmd == -1)
 			{
