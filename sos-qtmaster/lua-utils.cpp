@@ -1,5 +1,8 @@
 #include "lua-utils.h"
 
+#include "QtWidgets\qmessagebox.h"
+#include <sstream>
+
 #pragma comment(lib, "lua.lib")
 
 static inline void printPadding(int pad){
@@ -43,7 +46,30 @@ void printLuaValue(lua_State* L, int i, int indent){
 	}
 }
 
-static void stackDump(lua_State *L) {
+QString luaValueToString(lua_State* L, int i){
+	int t = lua_type(L, i);
+	lua_Number n = 0;
+	std::ostringstream ss;
+	switch (t)
+	{
+	case LUA_TSTRING:
+		return lua_tostring(L, i);
+		break;
+	case LUA_TBOOLEAN:
+		return lua_toboolean(L, i) ? "true" : "false";
+	case LUA_TNUMBER:
+		n = lua_tonumber(L, i);
+		return QString::number(n);
+		break;
+	case LUA_TTABLE:
+		return "table";
+	default:
+		return "other value";
+		break;
+	}
+}
+
+void stackDump(lua_State *L) {
 	int i;
 	int top = lua_gettop(L);
 	for (i = 1; i <= top; i++) {  /* repeat for each level */

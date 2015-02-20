@@ -1,6 +1,8 @@
 #include "sosslave.h"
 #include "objectwindow.h"
 #include "qmessagebox.h"
+#include "..\sos-qtserver\Common.h"
+#include "treenodewidget.h"
 
 const QString CONNECT_STRING = "Connect to server!";
 
@@ -15,14 +17,14 @@ SOSSlave::SOSSlave(QWidget *p)
 {
 	ui.setupUi(this);
 	adjustSize();
-	ObjectWindow* o = new ObjectWindow(&treeModel);
-	o->show();
-	QList<QString> list = {"root","child1","child2"};
+
+	QList<QString> list = { "root", "child1", "child2" };
 	addProperty(list);
 	list = { "root", "child1", "sibling1" };
 	addProperty(list);
 	list = { "root", "sibling1", "sibling1" };
 	addProperty(list);
+
 	ui.connectionLabel->setTextFormat(Qt::TextFormat::RichText);
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
 
@@ -35,6 +37,8 @@ SOSSlave::SOSSlave(QWidget *p)
 		this, static_cast<void (SOSSlave::*)(QAbstractSocket::SocketError)>(&SOSSlave::socketErrorHandler));
 
 	connect(ui.lineEdit, &QLineEdit::returnPressed, this, &SOSSlave::connectToServer);
+
+	connect(ui.showObjectWindowButton, &QPushButton::clicked, this, &SOSSlave::showRootObjectWindow);
 }
 
 SOSSlave::~SOSSlave()
@@ -69,8 +73,8 @@ void SOSSlave::addProperty(const QList<QString>& list) {
 
 void SOSSlave::onConnected(){
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_CONNECTED);
-	connect(&m_webSocket, &QWebSocket::textMessageReceived,
-		this, &SOSSlave::onTextMessageReceived);
+	connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &SOSSlave::onTextMessageReceived);
+	connect(&m_webSocket, &QWebSocket::binaryMessageReceived, this, &SOSSlave::onBinaryMessageReceived);
 	m_webSocket.sendTextMessage(QStringLiteral("slave"));
 }
 void SOSSlave::onTextMessageReceived(QString message){
@@ -94,4 +98,30 @@ void SOSSlave::connectToServer() {
 void SOSSlave::socketErrorHandler(QAbstractSocket::SocketError error) {
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
 	QMessageBox::information(this, "Error!", QString("ERROR OCCURED!\n") + m_webSocket.errorString());
+}
+
+void SOSSlave::onBinaryMessageReceived(QByteArray message){
+	QDataStream s(&message, QIODevice::ReadOnly);
+	QMap<QString, QString> map;
+	int type;
+	s >> type;
+	if ((MESSAGE_TYPE)type == MESSAGE_TYPE::WORLD){
+		s >> map;
+		treeModel.clear();
+		auto it = map.begin();
+		while (it != map.end()){
+			QStringList list = it.key().split(QString("."));
+			addProperty(list);
+			it++;
+		}
+	}
+	else {
+		QMessageBox::critical(this, "Error", "Unknown message type.");
+	}
+}
+
+void SOSSlave::showRootObjectWindow() {
+	ObjectWindow* o = new ObjectWindow(&treeModel, treeModel.indexFromItem(treeModel.invisibleRootItem()));
+	o->show();
+	o->setWindowTitle("WORLD");
 }

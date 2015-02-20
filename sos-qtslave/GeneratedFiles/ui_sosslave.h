@@ -18,10 +18,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -38,8 +36,7 @@ public:
     QLabel *label;
     QLineEdit *lineEdit;
     QPushButton *connectButton;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
+    QPushButton *showObjectWindowButton;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *SOSSlaveClass)
@@ -87,17 +84,15 @@ public:
 
         verticalLayout->addWidget(connectButton);
 
+        showObjectWindowButton = new QPushButton(centralWidget);
+        showObjectWindowButton->setObjectName(QStringLiteral("showObjectWindowButton"));
+
+        verticalLayout->addWidget(showObjectWindowButton);
+
 
         verticalLayout_2->addLayout(verticalLayout);
 
         SOSSlaveClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(SOSSlaveClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 494, 21));
-        SOSSlaveClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(SOSSlaveClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        SOSSlaveClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(SOSSlaveClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         SOSSlaveClass->setStatusBar(statusBar);
@@ -113,6 +108,7 @@ public:
         connectionLabel->setText(QApplication::translate("SOSSlaveClass", "dupa", 0));
         label->setText(QApplication::translate("SOSSlaveClass", "Server Addres:", 0));
         connectButton->setText(QApplication::translate("SOSSlaveClass", "Connect to server!", 0));
+        showObjectWindowButton->setText(QApplication::translate("SOSSlaveClass", "Show object window", 0));
     } // retranslateUi
 
 };
