@@ -19,6 +19,8 @@ protected:
 	Ui::SOSSlaveClass ui;
 	QStandardItemModel treeModel;
 	QWebSocket m_webSocket;
+	void treeAdd(QList<QString>& list, QStandardItem* it);
+	void treeRemove(QList<QString>& list, QStandardItem* it);
 	void addProperty(const QList<QString>& list);
 	void removeProperty(const QList<QString>& list);
 
