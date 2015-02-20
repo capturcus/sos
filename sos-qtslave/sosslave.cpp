@@ -3,6 +3,8 @@
 #include "qmessagebox.h"
 #include "..\sos-qtserver\Common.h"
 #include "treenodewidget.h"
+#include "qpushbutton.h"
+#include "qlineedit.h"
 
 const QString CONNECT_STRING = "Connect to server!";
 

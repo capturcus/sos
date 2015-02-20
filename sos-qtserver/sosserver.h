@@ -3,6 +3,7 @@
 
 #include "uithread.h"
 #include <QtCore\qobject.h>
+#undef QT_NO_SSL
 #include <QtNetwork\qsslerror.h>
 #include <QtCore\qset.h>
 

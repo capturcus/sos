@@ -77,8 +77,6 @@
     <CustomBuild Include="lualib.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="test.lua" />
+    <CustomBuild Include="test.lua" />
   </ItemGroup>
 </Project>

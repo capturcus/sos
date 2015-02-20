@@ -4,7 +4,7 @@
 #include <iostream>
 #include <QtWidgets\qapplication.h>
 #include "sosserver.h"
-#include <QtWebSockets\qwebsocket.h>
+#include <QtWebSockets\QWebSocket>
 
 UIThread::UIThread(QObject *parent)
 	: QThread(parent)
