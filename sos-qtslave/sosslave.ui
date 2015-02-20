@@ -51,6 +51,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="showObjectWindowButton">
+        <property name="text">
+         <string>Show object window</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>

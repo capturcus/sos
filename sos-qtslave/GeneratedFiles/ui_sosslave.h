@@ -38,6 +38,7 @@ public:
     QLabel *label;
     QLineEdit *lineEdit;
     QPushButton *connectButton;
+    QPushButton *showObjectWindowButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -87,6 +88,11 @@ public:
 
         verticalLayout->addWidget(connectButton);
 
+        showObjectWindowButton = new QPushButton(centralWidget);
+        showObjectWindowButton->setObjectName(QStringLiteral("showObjectWindowButton"));
+
+        verticalLayout->addWidget(showObjectWindowButton);
+
 
         verticalLayout_2->addLayout(verticalLayout);
 
@@ -113,6 +119,7 @@ public:
         connectionLabel->setText(QApplication::translate("SOSSlaveClass", "dupa", 0));
         label->setText(QApplication::translate("SOSSlaveClass", "Server Addres:", 0));
         connectButton->setText(QApplication::translate("SOSSlaveClass", "Connect to server!", 0));
+        showObjectWindowButton->setText(QApplication::translate("SOSSlaveClass", "Show object window", 0));
     } // retranslateUi
 
 };

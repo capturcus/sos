@@ -16,14 +16,14 @@ SOSSlave::SOSSlave(QWidget *p)
 {
 	ui.setupUi(this);
 	adjustSize();
-	ObjectWindow* o = new ObjectWindow(&treeModel);
-	o->show();
+
+	/*
 	QList<QString> list = { "root", "child1", "child2" };
 	addProperty(list);
 	list = { "root", "child1", "sibling1" };
 	addProperty(list);
 	list = { "root", "sibling1", "sibling1" };
-	addProperty(list);
+	addProperty(list);*/
 
 	ui.connectionLabel->setTextFormat(Qt::TextFormat::RichText);
 	ui.connectionLabel->setText(LABEL_HEADER + LABEL_DISCONNECTED);
@@ -37,6 +37,8 @@ SOSSlave::SOSSlave(QWidget *p)
 		this, static_cast<void (SOSSlave::*)(QAbstractSocket::SocketError)>(&SOSSlave::socketErrorHandler));
 
 	connect(ui.lineEdit, &QLineEdit::returnPressed, this, &SOSSlave::connectToServer);
+
+	connect(ui.showObjectWindowButton, &QPushButton::clicked, this, &SOSSlave::showRootObjectWindow);
 }
 
 SOSSlave::~SOSSlave()
@@ -116,4 +118,10 @@ void SOSSlave::onBinaryMessageReceived(QByteArray message){
 	else {
 		QMessageBox::critical(this, "Error", "Unknown message type.");
 	}
+}
+
+void SOSSlave::showRootObjectWindow() {
+	ObjectWindow* o = new ObjectWindow(&treeModel, treeModel.indexFromItem(treeModel.invisibleRootItem()));
+	o->show();
+	o->setWindowTitle("WORLD");
 }

@@ -28,6 +28,7 @@ protected slots:
 	void closed();
 	void connectToServer();
 	void socketErrorHandler(QAbstractSocket::SocketError error);
+	void showRootObjectWindow();
 	
 };
 
