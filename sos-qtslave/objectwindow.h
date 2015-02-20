@@ -13,7 +13,6 @@ public:
 	ObjectWindow(QStandardItemModel*, QPersistentModelIndex root, QWidget *parent = 0);
 	~ObjectWindow();
 	void setRootIndex(const QModelIndex&);
-	void setIndexWidgets(QStandardItem* it);
 
 public slots:
 	void doubleClicked(const QModelIndex & index);

@@ -34,6 +34,8 @@ QSize NodeDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelInd
 
 void NodeDelegate::setNodeWidget(const QModelIndex& index) const {
 	QStandardItemModel* model = (QStandardItemModel*)index.model();
-	treeNodeWidget->setKey(model->itemFromIndex(index)->text());
-	treeNodeWidget->setValue("value");
+	QStandardItem* item = model->itemFromIndex(index);
+	treeNodeWidget->setKey(item->text());
+	QVariant v = item->data(42);
+	treeNodeWidget->setValue(v.toString());
 }

@@ -19,7 +19,7 @@ protected:
 	Ui::SOSSlaveClass ui;
 	QStandardItemModel treeModel;
 	QWebSocket m_webSocket;
-	void addProperty(const QList<QString>& list);
+	void addProperty(const QList<QString>& list, const QString& s);
 
 protected slots:
 	void onConnected();
