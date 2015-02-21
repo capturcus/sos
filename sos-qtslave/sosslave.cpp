@@ -50,7 +50,7 @@ SOSSlave::~SOSSlave()
 
 }
 
-void treeAdd(QList<QString>& list, QStandardItem* it, const QString& value){
+void SOSSlave::treeAdd(QList<QString>& list, QStandardItem* it, const QString& value){
 	if (list.isEmpty()){
 		it->setData(value, 42);
 		return;
