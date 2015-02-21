@@ -175,6 +175,9 @@ void SOSMaster::returnPressed() {
 			}
 			else
 			{
+				if (it.value() != oldIt.value())
+					*stream << (qint8)1 << it.key() << it.value();
+
 				// Bez zmian
 				it++;
 				oldIt++;
