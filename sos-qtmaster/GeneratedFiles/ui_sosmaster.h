@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -37,7 +36,6 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
-    QGraphicsView *graphicsView;
     QVBoxLayout *verticalLayout;
     QLabel *luaOutput;
     QLineEdit *luaInput;
@@ -66,17 +64,17 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        graphicsView = new QGraphicsView(centralWidget);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-
-        horizontalLayout->addWidget(graphicsView);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         luaOutput = new QLabel(centralWidget);
         luaOutput->setObjectName(QStringLiteral("luaOutput"));
         luaOutput->setEnabled(true);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(luaOutput->sizePolicy().hasHeightForWidth());
+        luaOutput->setSizePolicy(sizePolicy);
         luaOutput->setLayoutDirection(Qt::LeftToRight);
         luaOutput->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         luaOutput->setWordWrap(true);
